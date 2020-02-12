@@ -43,14 +43,25 @@ public class BlueprintAPIController {
 	        return new ResponseEntity<>("Error, No blueprints found",HttpStatus.NOT_FOUND);
 	    }        
 	}
-    
-	
+    	
 	//@RequestMapping(method = RequestMethod.GET)
-	@GetMapping("/blueprints/{author}")
+	@GetMapping("/{author}")
 	public ResponseEntity<?> getAllBlueprintsByAuthor(@PathVariable String author){
 	    try {
 	        //obtener datos que se enviarán a través del API
 	        return new ResponseEntity<>(bps.getBlueprintsByAuthor(author),HttpStatus.ACCEPTED);
+	    } catch (Exception ex) {
+	        Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+	        return new ResponseEntity<>("Error, No blueprints found",HttpStatus.NOT_FOUND);
+	    }        
+	}	
+    
+	
+	@GetMapping("/{author}/{bpname}")
+	public ResponseEntity<?> getAllBlueprintsByAuthor(@PathVariable String author, @PathVariable String bpname){
+	    try {
+	        //obtener datos que se enviarán a través del API
+	        return new ResponseEntity<>(bps.getBlueprint(author, bpname),HttpStatus.ACCEPTED);
 	    } catch (Exception ex) {
 	        Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
 	        return new ResponseEntity<>("Error, No blueprints found",HttpStatus.NOT_FOUND);
