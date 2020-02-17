@@ -55,7 +55,7 @@ public class BlueprintAPIController {
 	    try {
 	        //obtener datos que se enviarán a través del API
 	        return new ResponseEntity<>(bps.getBlueprintsByAuthor(author),HttpStatus.ACCEPTED);
-	    } catch (Exception ex) {
+	    } catch (BlueprintNotFoundException ex) {
 	        Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
 	        return new ResponseEntity<>("Error, No blueprints found",HttpStatus.NOT_FOUND);
 	    }        
@@ -67,7 +67,7 @@ public class BlueprintAPIController {
 	    try {
 	        //obtener datos que se enviarán a través del API
 	        return new ResponseEntity<>(bps.getBlueprint(author, bpname),HttpStatus.ACCEPTED);
-	    } catch (Exception ex) {
+	    } catch (BlueprintNotFoundException ex) {
 	        Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
 	        return new ResponseEntity<>("Error, No blueprints found",HttpStatus.NOT_FOUND);
 	    }        
@@ -75,7 +75,7 @@ public class BlueprintAPIController {
     
 	
 	@RequestMapping(method = RequestMethod.POST)	
-	public ResponseEntity<?> manejadorPostRecursoXX(@RequestBody Blueprint bp){
+	public ResponseEntity<?> saveBlueprint(@RequestBody Blueprint bp){
 	    	boolean flag = false;
 	        //registrar Blueprint
 			try {
