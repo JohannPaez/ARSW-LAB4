@@ -44,6 +44,10 @@ public class Blueprint {
     public void addPoint(Point p){
         this.points.add(p);
     }
+    
+    public void setPoints(List<Point> points) {
+    	this.points = points;
+    }
 
     @Override
     public String toString() {
