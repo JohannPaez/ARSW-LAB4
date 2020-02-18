@@ -1,0 +1,2 @@
+Para dar solución al problema de concurrencia cambiamos el hashmap usado en la clase InMemoryBlueprintPersistence por un
+ConcurrentHashMap que nos permite tener las mismas funcionalidades pero manteniendo la concurrencia.
